@@ -1,12 +1,12 @@
 CC = g++
-FLAGS = -Wall -Wextra -Werror #-MMD #-g -fsanitize=address
-#VPATH := include
-SRCS = phonebook.cpp
+FLAGS = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
+VPATH := include
+SRCS = contact.cpp phonebook.cpp 
 
-#INC = func.h 
+INC = phonebook.hpp contact.hpp 
 
 OBJ = $(SRCS:.cpp=.o)
-#DEPENDS = ${SRCS:.cpp=.d}
+DEPENDS = ${SRCS:.cpp=.d}
 NAME = phonebook 
 
 .PHONY: all clean fclean re lib
@@ -17,14 +17,14 @@ $(NAME): $(OBJ)
 		$(CC) $(FLAGS) $(OBJ) $(LFT) -o $(NAME)
 
 .cpp.o: $(SRCS)
-		$(CC) $(FLAGS) -c $< #-I./include
+		$(CC) $(FLAGS) -c $< -I./include/
 
 clean:
-		@rm -rf $(OBJ) #$(DEPENDS)
+		@rm -rf $(OBJ) $(DEPENDS)
 
 fclean: clean
 		@rm -rf $(NAME)
 
 re: fclean all
 
-#-include ${DEPENDS}
+-include ${DEPENDS}
