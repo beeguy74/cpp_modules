@@ -24,26 +24,10 @@ void Contact::print()
     std::cout << secret << std::endl;
 }
 
-void Contact::format(std::string st)
-{
-	std::istringstream is(st);
-    char arr[10];
-	if (st.size() > 10)
-	{
-		is >> std::setw(10) >> arr;
-		std::cout << arr << ".";
-	}
-	else
-		std::cout << std::setw(10) << st;
-}
-
 void Contact::print_search(int  i)
 {
-    std::cout << std::setw(10) << i << "|";
-	format(first_name);
-    std::cout << "|";
-	format(last_name);
-    std::cout << "|";
-	format(nick_name);
-    std::cout << std::endl;
+    std::cout << i << "   ";
+    std::cout << first_name << "  ";
+    std::cout << last_name << "  ";
+    std::cout << nick_name << std::endl;
 }
