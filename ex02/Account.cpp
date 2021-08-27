@@ -44,15 +44,15 @@ int Account::getTotalAmount(void)
     return Account::_totalAmount;
 }
 
-// int Account::getNbDeposits(void)
-// {
-//     return Account::_nbDeposits;
-// }
+int Account::getNbDeposits(void)
+{
+    return Account::_totalNbDeposits;
+}
 
-// int Account::getNbWithdrawals(void)
-// {
-//     return Account::_nbWithdrawals;
-// }
+int Account::getNbWithdrawals(void)
+{
+    return Account::_totalNbWithdrawals;
+}
 
 void Account::displayAccountsInfos(void){
     Account::_displayTimestamp();
@@ -99,16 +99,35 @@ bool    Account::makeWithdrawal(int withdrawal) {
     return true;
 }
 
+int Account::checkAmount(void) const{
+    return this->_amount;
+}
+
+void    Account::displayStatus(void) const{
+    Account::_displayTimestamp();
+    std::cout << " index:" << this->_accountIndex
+                << ";amount:" << this->_amount
+                << ";deposits:" << this->_nbDeposits
+                << ";withdrawals:" << this->_nbWithdrawals
+                << std::endl;
+    return ;
+}
+
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-int main() {
-    Account vasya(100);
-    Account petya(1100);
-    Account::displayAccountsInfos();
-    petya.makeDeposit(45);
-    petya.makeWithdrawal(1150);
-    return 0;
-}
+// int main() {
+//     Account vasya(100);
+//     Account petya(1100);
+//     Account::displayAccountsInfos();
+//     petya.makeDeposit(45);
+//     petya.makeWithdrawal(120);
+//     petya.displayStatus();
+//     vasya.makeDeposit(45);
+//     vasya.makeWithdrawal(120);
+//     vasya.displayStatus();
+//     Account::displayAccountsInfos();
+//     return 0;
+// }
