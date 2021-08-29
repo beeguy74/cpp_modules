@@ -1,5 +1,7 @@
 #include <iostream>
-#include <string>
+
+#ifndef _CONTACT_H_
+#define _CONTACT_H_
 
 class Contact
 {
@@ -13,3 +15,5 @@ class Contact
         void        print();
         void        print_search(int i);
 };
+
+#endif

@@ -1,7 +1,7 @@
 CC = g++
 FLAGS = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 VPATH := include
-SRCS = contact.cpp phonebook.cpp 
+SRCS = main.cpp contact.cpp phonebook.cpp 
 
 INC = phonebook.hpp contact.hpp 
 

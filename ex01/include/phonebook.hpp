@@ -1,6 +1,8 @@
 #include <iostream>
-#include <string>
 #include "contact.hpp"
+
+#ifndef _PHONEBOOK_H_
+#define _PHONEBOOK_H_
 
 class Phonebook
 {
@@ -12,3 +14,5 @@ class Phonebook
         void    add();
         void    search();
 };
+
+#endif
