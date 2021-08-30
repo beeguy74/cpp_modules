@@ -15,5 +15,9 @@ void    HumanB::setWeapon(Weapon *gun){
 }
 
 void    HumanB::attack(){
-    std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
+    std::cout << this->_name << " attacks with his ";
+    if (this->_weapon == NULL)
+        std::cout << "hairy hand" << std::endl;
+    else
+        std::cout << this->_weapon->getType() << std::endl;
 }
