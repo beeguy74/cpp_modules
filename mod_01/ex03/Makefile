@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 VPATH := include
 SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
-INC = Zombie.hpp
+INC = Weapon.hpp HumanA.hpp HumanB.hpp
 
 OBJ = $(SRCS:.cpp=.o)
 DEPENDS = ${SRCS:.cpp=.d}
