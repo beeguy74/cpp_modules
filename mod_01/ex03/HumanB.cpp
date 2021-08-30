@@ -9,8 +9,8 @@ HumanB::~HumanB(void){
     return ;
 }
 
-void    HumanB::setWeapon(Weapon *gun){
-    this->_weapon = gun;
+void    HumanB::setWeapon(Weapon &gun){
+    this->_weapon = &gun;
     return ;
 }
 
