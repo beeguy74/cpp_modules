@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #ifndef _CONTACT_H_
 #define _CONTACT_H_
@@ -10,7 +11,10 @@ class Contact
         std::string nick_name;
         std::string phone_numb;
         std::string secret;
+        std::string get_stream(std::string src);
     public:
+                    Contact(void);
+                    ~Contact(void);
         void        create();
         void        print();
         void        print_search(int i);

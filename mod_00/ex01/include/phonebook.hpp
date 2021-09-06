@@ -10,6 +10,8 @@ class Phonebook
         int     index;
         Contact arr[8];
     public:
+        Phonebook(void);
+        ~Phonebook(void);
         void    print();
         void    add();
         void    search();
