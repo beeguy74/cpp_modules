@@ -17,7 +17,7 @@ $(NAME): $(OBJ)
 		$(CC) $(FLAGS) $(OBJ) $(LFT) -o $(NAME)
 
 .cpp.o: $(SRCS)
-		$(CC) $(FLAGS) -c $< #-I./include
+		$(CC) $(FLAGS) -c $< 
 
 clean:
 		@rm -rf $(OBJ) #$(DEPENDS)
