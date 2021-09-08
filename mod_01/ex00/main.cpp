@@ -10,7 +10,7 @@ int main(void)
 
     shon = newZombie("Shon");
     shon->announce();
-    randomChump("Bill Murray");
     delete shon;
+    randomChump("Bill Murray");
     return 0;
 }
