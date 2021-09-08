@@ -8,10 +8,14 @@ private:
     std::string _type;
     static int  _index;
 public:
+    Weapon();
     Weapon(std::string type);
+    Weapon(const Weapon &weapon);
     ~Weapon(void);
+
+    Weapon& operator=(const Weapon &weapon);
     void                setType(std::string type);
-    std::string const   &getType(void);
+    const std::string&   getType() const;
 };
 
 #endif

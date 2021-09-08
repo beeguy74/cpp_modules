@@ -1,11 +1,24 @@
 #include "Weapon.hpp"
 
+Weapon::Weapon() : _type(std::string()){
+    return ;
+}
+
 Weapon::Weapon(std::string type) : _type(type){
     return ;
 }
 
-Weapon::~Weapon(void){
+Weapon::Weapon(const Weapon &weapon) : _type(weapon.getType()){
     return ;
+}
+
+Weapon::~Weapon(){
+    return ;
+}
+
+Weapon& Weapon::operator=(const Weapon &weapon){
+    this->_type = weapon._type;
+    return *this;
 }
 
 void    Weapon::setType(std::string type){
@@ -13,7 +26,7 @@ void    Weapon::setType(std::string type){
     return ;
 }
 
-std::string const   &Weapon::getType(void){
+const std::string&    Weapon::getType() const{
     return this->_type;
 }
 
