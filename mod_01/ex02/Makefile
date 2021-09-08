@@ -1,4 +1,4 @@
-CC = g++
+CC = clang++
 FLAGS = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 # VPATH := include
 SRCS = main.cpp
