@@ -7,7 +7,7 @@ int main(void)
     std::string &stringREF = str;
 
     std::cout << "adresses:" << std::endl;
-    std::cout << "&str      = " << &str << std::endl;
+    std::cout << "&str       = " << &str << std::endl;
     std::cout << "&stringPTR = " << stringPTR << std::endl;
     std::cout << "&stringREF = " << &stringREF << std::endl;
     std::cout << "string:" << std::endl;
