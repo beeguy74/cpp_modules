@@ -15,5 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: make
       run: make -C ./mod_01/ex04/
+    - name: make test
+      run: make REALTEST -C ./mod_01/ex04/
     - name: test
       run:  ./mod_01/ex04/REALTEST
