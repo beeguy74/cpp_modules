@@ -32,6 +32,12 @@ Fixed::~Fixed(){
     return ;
 }
 
+Fixed& Fixed::operator=(const Fixed &other){
+    std::cout << "Assignation operator called\n";
+    this->_value = other.getRawBits();
+    return *this;
+}
+
 void    Fixed::setRawBits(int const raw){
     this->_value = raw;
     return ;
@@ -52,11 +58,47 @@ float   Fixed::toFloat() const{
     return res;
 }
 
-Fixed& Fixed::operator=(const Fixed &other){
-    std::cout << "Assignation operator called\n";
-    this->_value = other.getRawBits();
-    return *this;
-}
+bool    Fixed::operator>(Fixed const & other) const{
+    if (this->getRawBits() > other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator<(Fixed const & other) const{
+    if (this->getRawBits() < other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator>=(Fixed const & other) const{
+    if (this->getRawBits() >= other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator<=(Fixed const & other) const{
+    if (this->getRawBits() <= other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator==(Fixed const & other) const{
+    if (this->getRawBits() == other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator!=(Fixed const & other) const{
+    if (this->getRawBits() == other.getRawBits()){
+        return false;
+    }
+    return true;
+};
 
 Fixed   Fixed::operator+(const Fixed &other) const{
     Fixed res;
@@ -101,28 +143,54 @@ Fixed   Fixed::operator/(const Fixed &other) const{
     return res;
 }
 
-Fixed&       min(Fixed& first, Fixed& second){
+Fixed&  Fixed::operator++(){
+    ++this->_value;
+    return *this;
+}
+
+Fixed&  Fixed::operator--(){
+    --this->_value;
+    return *this;
+}
+
+Fixed  Fixed::operator++(int){
+    Fixed tmp;
+    
+    tmp.setRawBits(this->_value);
+    ++(*this);
+    return tmp;
+}
+
+Fixed  Fixed::operator--(int){
+    Fixed tmp;
+    
+    tmp.setRawBits(this->_value);
+    --(*this);
+    return tmp;
+}
+
+Fixed&       Fixed::min(Fixed& first, Fixed& second){
     if (first.getRawBits() < second.getRawBits()){
         return first;
     }
     return second;
 };
 
-Fixed&       max(Fixed& first, Fixed& second){
+Fixed&       Fixed::max(Fixed& first, Fixed& second){
     if (first.getRawBits() > second.getRawBits()){
         return first;
     }
     return second;
 };
 
-const Fixed& min(const Fixed& first, const Fixed& second){
+Fixed const & Fixed::min(Fixed const & first, Fixed const & second){
     if (first.getRawBits() < second.getRawBits()){
         return first;
     }
     return second;
 };
 
-const Fixed& max(const Fixed& first, const Fixed& second){
+Fixed const & Fixed::max(Fixed const & first, Fixed const & second){
     if (first.getRawBits() > second.getRawBits()){
         return first;
     }
