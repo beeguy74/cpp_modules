@@ -10,7 +10,5 @@ int main( void ) {
 	cheech.attack("Chohng");
 	chohng.takeDamage(2);
 	chohng.beRepaired(2);
-	drZod = chohng;
-	drZod.highFivesGuys();
 	return 0;
 }

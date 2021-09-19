@@ -1,9 +1,9 @@
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 VPATH := include
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp  FragTrap.cpp
+SRCS = main.cpp ClapTrap.cpp FragTrap.cpp
 
-INC = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+INC = ClapTrap.hpp FragTrap.hpp
 
 OBJ = $(SRCS:.cpp=.o)
 DEPENDS = ${SRCS:.cpp=.d}
