@@ -11,6 +11,7 @@ int main( void ) {
 	chohng.highFivesGuys();
 	std::cout << RED;
 	cheech.attack("Chohng");
+	cheech.showStats();
 	cheech.guardGate();
 	cheech.highFivesGuys();
 	cheech.whoAmI();

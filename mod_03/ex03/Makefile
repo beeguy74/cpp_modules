@@ -1,5 +1,5 @@
 CC = clang++
-FLAGS = -Wall -Wextra -Werror -Wshadow -MMD #-g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -MMD #-g -fsanitize=address
 VPATH := include
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp  FragTrap.cpp DiamondTrap.cpp
 
