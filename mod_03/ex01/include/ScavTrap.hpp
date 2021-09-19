@@ -3,13 +3,13 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap{
+class ScavTrap: public ClapTrap{
 public:
     ScavTrap();
     ScavTrap(const std::string& name);
     ~ScavTrap();
     void    guardGate();
-    void    attack(const std::string& taget);
+    void    attack(const std::string& target);
 };
 
 #endif

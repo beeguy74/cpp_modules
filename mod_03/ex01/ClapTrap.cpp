@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(const ClapTrap& other){
 }
 
 ClapTrap::~ClapTrap(){
-    std::cout << "Destructor ClapTrap " << this->_name << std::endl;
+    std::cout << "Destructor ClapTrap " << std::endl;
     return ;
 }
 
