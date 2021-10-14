@@ -15,6 +15,17 @@ DiamondTrap::DiamondTrap(const std::string& name):
     return ; 
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap& other){
+    std::cout << "Copy DiamondTrap constructor " << std::endl;
+    this->operator=(other);
+    return ;
+}
+
+DiamondTrap::~DiamondTrap(){
+    std::cout << "DiamodTrap destructor " << std::endl;
+    return;
+}
+
 void    DiamondTrap::showStats(){
     std::cout << this->_name << " Hitpoints are " << this->_hitPoints << std::endl;
     std::cout << this->_name << " Energypoints are " << this->_energyPoints << std::endl;
@@ -22,9 +33,13 @@ void    DiamondTrap::showStats(){
     return ;
 }
 
-DiamondTrap::~DiamondTrap(){
-    std::cout << "DiamodTrap destructor " << std::endl;
-    return;
+DiamondTrap&   DiamondTrap::operator=(const DiamondTrap& other){
+    std::cout << "Assignation DiamondTrap " << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
 }
 
 void	DiamondTrap::whoAmI(void)

@@ -17,10 +17,12 @@ class DiamondTrap: public ScavTrap, public FragTrap{
     public:
         DiamondTrap();
         DiamondTrap(const std::string& name);
-        ~DiamondTrap();
+        DiamondTrap(const DiamondTrap& other);
+        virtual ~DiamondTrap();
 
         void            whoAmI();
         void            showStats();
+        DiamondTrap&    operator=(const DiamondTrap& other);
 };
 
 #endif
