@@ -19,11 +19,6 @@ class DiamondTrap: public ScavTrap, public FragTrap{
         DiamondTrap(const std::string& name);
         ~DiamondTrap();
 
-		// using			FragTrap::_hitPoints;
-		using			ScavTrap::_energyPoints;
-		// using			FragTrap::_attackDamage;
-
-        using			ScavTrap::attack;
         void            whoAmI();
         void            showStats();
 };
