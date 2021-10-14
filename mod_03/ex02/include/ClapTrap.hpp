@@ -13,7 +13,7 @@ public:
     ClapTrap();
     ClapTrap(const std::string& name);
     ClapTrap(const ClapTrap& other);
-    ~ClapTrap();
+    virtual ~ClapTrap();
     void            attack(std::string const& target);
     void            takeDamage(unsigned int amount);
     void            beRepaired(unsigned int amount);
