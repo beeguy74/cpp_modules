@@ -8,6 +8,12 @@ ScavTrap::ScavTrap(): ClapTrap(){
     return ;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& other){
+    std::cout << "Copy ScavTrap constructor " << std::endl;
+    this->operator=(other);
+    return ;
+}
+
 ScavTrap::ScavTrap(const std::string& name): ClapTrap(name){
     std::cout << "Name ScavTrap constructor " << std::endl;
     this->_hitPoints = 100;
@@ -19,6 +25,15 @@ ScavTrap::ScavTrap(const std::string& name): ClapTrap(name){
 ScavTrap::~ScavTrap(){
     std::cout << "ScavTrap destructor" << std::endl;
     return;
+}
+
+ScavTrap&   ScavTrap::operator=(const ScavTrap& other){
+    std::cout << "Assignation ScavTrap " << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
 }
 
 void    ScavTrap::guardGate(){
