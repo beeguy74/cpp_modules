@@ -22,7 +22,8 @@ Dog::~Dog(){
 Dog     &Dog::operator=(const Dog &other){
     std::cout << "Assignation Dog" << std::endl;
     this->_type = other._type;
-    this->_brain = other._brain;
+    delete this->_brain;
+    this->_brain = new Brain(*other._brain);
     return *this;
 }
 
