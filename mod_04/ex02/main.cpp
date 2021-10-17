@@ -22,10 +22,6 @@ int main(void){
 			arr[i] = new Dog;
 	}
 
-	for (int i = 0; i < 10; ++i){
-		delete arr[i];
-	}
-
 	Dog	petya;
 	Dog vasya;
 
@@ -36,7 +32,10 @@ int main(void){
 	petya = vasya;
 	std::cout << "petya is copy of vasya" << std::endl;
 	print_ten_ideas(vasya.getBrain());
-	while (true)
-		;
+
+	for (int i = 0; i < 10; ++i){
+		delete arr[i];
+	}
+
 	return 0;
 }
