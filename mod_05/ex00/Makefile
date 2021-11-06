@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std='c++98' -MMD #-g -fsanitize=address
 VPATH := include
 SRCS = main.cpp Bureaucrat.cpp
 
-INC = Animal.hpp Bureaucrat.hpp
+INC = Bureaucrat.hpp
 
 OBJ = $(SRCS:.cpp=.o)
 DEPENDS = ${SRCS:.cpp=.d}
