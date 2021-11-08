@@ -1,9 +1,9 @@
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -std='c++98' -MMD #-g -fsanitize=address
 VPATH := include
-SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
-INC = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp
+INC = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 OBJ = $(SRCS:.cpp=.o)
 DEPENDS = ${SRCS:.cpp=.d}
@@ -24,6 +24,7 @@ clean:
 
 fclean: clean
 		@rm -rf $(NAME)
+		@rm -rf *_shrubbery
 
 re: fclean all
 

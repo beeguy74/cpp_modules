@@ -31,6 +31,15 @@ ShrubberyCreationForm
 
 void    ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
     this->executorValidation(executor);
-    std::cout << "EXECUTION!!!\n";
+    std::ofstream   file;
+
+    file.open(this->_target + "_shrubbery", std::ios::out);
+    file << "  @8@@@@    @8888@\n"
+        << " @@@@0@@@  @000000@\n"
+        << "  @9@@@@    @9999@\n"
+        << "    ||        ||\n"
+        << ".../||\\....../||\\...\n";
+    std::cout << this->_target << "_shrubbery created" << std::endl;
+    file.close();
     return ;
 }

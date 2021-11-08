@@ -1,22 +1,34 @@
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
-
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void){
 	Bureaucrat	petya = Bureaucrat("Petya", 146);
-	Bureaucrat	vanya = Bureaucrat("Vanya", 137);
+	Bureaucrat	vanya = Bureaucrat("Vanya", 35);
+	Bureaucrat	vicePresident = Bureaucrat("vicePresident", 2);
 	std::string	home = "home";
-	ShrubberyCreationForm form = ShrubberyCreationForm(home);
+	std::string chair = "chair";
+	std::string person = "person";
+	ShrubberyCreationForm shrubbery = ShrubberyCreationForm(home);
+	RobotomyRequestForm robotomy = RobotomyRequestForm(chair);
+	PresidentialPardonForm pardon = PresidentialPardonForm(person);
 
 
 	std::cout << petya << std::endl;
-	std::cout << form << std::endl;
-	petya.signForm(form);
+	std::cout << shrubbery << std::endl;
+	petya.signForm(shrubbery);
 	std::cout << vanya << std::endl;
-	vanya.executeForm(form);
-	vanya.signForm(form);
-	petya.executeForm(form);
-	vanya.executeForm(form);
+	vanya.executeForm(shrubbery);
+	vanya.signForm(shrubbery);
+	petya.executeForm(shrubbery);
+	vanya.executeForm(shrubbery);
+
+	vanya.signForm(robotomy);
+	vanya.executeForm(robotomy);
+	std::cout << vicePresident << std::endl;
+	vicePresident.signForm(pardon);
+	vicePresident.executeForm(pardon);
 	return 0;
 }
