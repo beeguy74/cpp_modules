@@ -1,8 +1,8 @@
 #include "serialize.hpp"
 
 int main(void){
-    t_Data      data;
-    t_Data      *de_data;
+    Data      data;
+    Data      *de_data;
     uintptr_t   raw;
 
     data.str = std::string("Hello");

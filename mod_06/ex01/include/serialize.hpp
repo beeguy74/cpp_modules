@@ -8,10 +8,10 @@ typedef struct  s_Data
 {
     std::string str;
     int         num;
-}               t_Data;
+}               Data;
 
-uintptr_t   serialize(t_Data *ptr);
+uintptr_t   serialize(Data *ptr);
 
-t_Data  *deserialize(uintptr_t raw);
+Data  *deserialize(uintptr_t raw);
 
 #endif
