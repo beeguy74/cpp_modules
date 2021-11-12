@@ -1,0 +1,198 @@
+#include "Fixed.hpp"
+
+const int Fixed::_fractionalBits = 8;
+const int Fixed::_exhibitor = 1 << Fixed::_fractionalBits;
+
+Fixed::Fixed() : _value(0){
+    return ;
+}
+
+Fixed::Fixed(Fixed const &other){
+    this->operator=(other);
+    return ;
+}
+
+Fixed::Fixed(int const value){
+    this->_value = value << this->_fractionalBits;
+    return ;
+}
+
+Fixed::Fixed(float const value){
+    this->_value = static_cast<int>(roundf(value * this->_exhibitor));
+    return ;
+}
+
+
+Fixed::~Fixed(){
+    return ;
+}
+
+Fixed& Fixed::operator=(const Fixed &other){
+    this->_value = other.getRawBits();
+    return *this;
+}
+
+void    Fixed::setRawBits(int const raw){
+    this->_value = raw;
+    return ;
+}
+
+int     Fixed::getRawBits() const{
+    return this->_value;
+}
+
+int     Fixed::toInt() const{
+    return this->_value >> this->_fractionalBits;
+}
+
+float   Fixed::toFloat() const{
+    float   res;
+
+    res = static_cast<float>(this->_value) / this->_exhibitor;
+    return res;
+}
+
+bool    Fixed::operator>(Fixed const & other) const{
+    if (this->getRawBits() > other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator<(Fixed const & other) const{
+    if (this->getRawBits() < other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator>=(Fixed const & other) const{
+    if (this->getRawBits() >= other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator<=(Fixed const & other) const{
+    if (this->getRawBits() <= other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator==(Fixed const & other) const{
+    if (this->getRawBits() == other.getRawBits()){
+        return true;
+    }
+    return false;
+};
+
+bool    Fixed::operator!=(Fixed const & other) const{
+    if (this->getRawBits() == other.getRawBits()){
+        return false;
+    }
+    return true;
+};
+
+Fixed   Fixed::operator+(const Fixed &other) const{
+    Fixed res;
+
+    res.setRawBits(this->getRawBits() + other.getRawBits());
+    return res;
+}
+
+Fixed   Fixed::operator-(const Fixed &other) const{
+    Fixed res;
+
+    res.setRawBits(this->getRawBits() - other.getRawBits());
+    return res;
+}
+
+Fixed   Fixed::operator*(const Fixed &other) const{
+    Fixed   res;
+    int     tmp;
+
+    tmp = this->getRawBits() * other.getRawBits();
+    if (other.getRawBits() != 0 && tmp / other.getRawBits() != this->getRawBits()){
+        std::cout << "Overflow!\n";
+        int firstInt = this->toInt();
+        int secondInt = other.toInt();
+        int firstFl = this->getRawBits() & (this->_exhibitor - 1);
+        int secondFl = other.getRawBits() & (this->_exhibitor - 1);
+        tmp = (firstInt * secondInt) * this->_exhibitor + \
+                    (firstFl * secondFl) * this->_exhibitor + \
+                    firstInt * secondFl + secondInt * firstFl;
+        res.setRawBits(tmp);
+    }
+    else{
+        res.setRawBits(tmp / this->_exhibitor);
+    }
+    return res;
+}
+
+Fixed   Fixed::operator/(const Fixed &other) const{
+    Fixed   res;
+
+    res.setRawBits(this->getRawBits() * this->_exhibitor / other.getRawBits());
+    return res;
+}
+
+Fixed&  Fixed::operator++(){
+    ++this->_value;
+    return *this;
+}
+
+Fixed&  Fixed::operator--(){
+    --this->_value;
+    return *this;
+}
+
+Fixed  Fixed::operator++(int){
+    Fixed tmp;
+    
+    tmp.setRawBits(this->_value);
+    ++(*this);
+    return tmp;
+}
+
+Fixed  Fixed::operator--(int){
+    Fixed tmp;
+    
+    tmp.setRawBits(this->_value);
+    --(*this);
+    return tmp;
+}
+
+Fixed&       Fixed::min(Fixed& first, Fixed& second){
+    if (first.getRawBits() < second.getRawBits()){
+        return first;
+    }
+    return second;
+};
+
+Fixed&       Fixed::max(Fixed& first, Fixed& second){
+    if (first.getRawBits() > second.getRawBits()){
+        return first;
+    }
+    return second;
+};
+
+Fixed const & Fixed::min(Fixed const & first, Fixed const & second){
+    if (first.getRawBits() < second.getRawBits()){
+        return first;
+    }
+    return second;
+};
+
+Fixed const & Fixed::max(Fixed const & first, Fixed const & second){
+    if (first.getRawBits() > second.getRawBits()){
+        return first;
+    }
+    return second;
+};
+
+
+std::ostream&   operator<<( std::ostream& out, Fixed const &other){
+    out << other.toFloat();
+    return out;
+}
