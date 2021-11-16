@@ -10,6 +10,18 @@ class MutantStack: public std::stack<T>{
 public:
     typedef typename std::stack<T>::container_type::iterator iterator;
 
+    MutantStack<T>(){}
+
+    MutantStack<T>(const MutantStack<T> &other): std::stack<T>(other){}
+
+    ~MutantStack<T>(){}
+
+    MutantStack&
+    operator=(const MutantStack<T> &other){
+        return (std::stack<T>::operator=(other));
+    }
+
+
     iterator    begin(){
         return (std::stack<T>::c.begin());
     }
